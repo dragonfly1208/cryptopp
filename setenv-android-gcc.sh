@@ -17,6 +17,16 @@
 # ====================================================================
 
 # set -eu
+#source ./setenv-android-gcc.sh armeabi-v7a
+#make -f GNUmakefile-cross
+
+
+export PATH=/cygdrive/d/ProgramFiles/android-ndk-r17c/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64/bin:$PATH
+# Sanity check
+if [ "$0" = "${BASH_SOURCE[0]}" ]; then
+    echo "Please source this setenv script"
+    exit 0
+fi
 
 unset IS_CROSS_COMPILE
 
@@ -65,7 +75,10 @@ fi
 if [ -z "${AOSP_API_VERSION-}" ]; then
 	AOSP_API_VERSION="21"
 fi
-
+#use AOSP_API_VERSION 22
+AOSP_API_VERSION="22"
+AOSP_API= 
+#AOSP_API= android-22
 if [ -z "${AOSP_API-}" ]; then
 	AOSP_API="android-${AOSP_API_VERSION}"
 else
@@ -80,6 +93,8 @@ fi
 #   http://groups.google.com/group/android-ndk/browse_thread/thread/a998e139aca71d77.
 # If the user did not specify the NDK location, try and pick it up. We expect something
 #   like ANDROID_NDK_ROOT=/opt/android-ndk-r10e or ANDROID_NDK_ROOT=/usr/local/android-ndk-r10e.
+
+ANDROID_NDK_ROOT=D:/ProgramFiles/android-ndk-r17c
 
 if [ -z "${ANDROID_NDK_ROOT-}" ]; then
 	ANDROID_NDK_ROOT=$(find /opt -maxdepth 1 -type d -name android-ndk* 2>/dev/null | tail -1)
