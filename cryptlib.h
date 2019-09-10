@@ -824,7 +824,7 @@ protected:
 ///   in ECB mode (for example the DES::Encryption class), which are stateless.
 ///   These classes should not be used directly, but only in combination with
 ///   a mode class (see CipherModeDocumentation in modes.h).
-class CRYPTOPP_DLL CRYPTOPP_NO_VTABLE BlockTransformation : public Algorithm
+class CRYPTOPP_DLL CRYPTOPP_NO_VTABLE BlockTransformation : virtual public Algorithm
 {
 public:
 	virtual ~BlockTransformation() {}
@@ -914,7 +914,7 @@ public:
 
 /// \brief Interface for the data processing portion of stream ciphers
 /// \sa StreamTransformationFilter()
-class CRYPTOPP_DLL CRYPTOPP_NO_VTABLE StreamTransformation : public Algorithm
+class CRYPTOPP_DLL CRYPTOPP_NO_VTABLE StreamTransformation : virtual public Algorithm
 {
 public:
 	virtual ~StreamTransformation() {}
@@ -1081,7 +1081,7 @@ public:
 ///   be hashed in pieces by calling Update() on each piece followed by
 ///   calling Final().
 /// \sa HashFilter(), HashVerificationFilter()
-class CRYPTOPP_DLL CRYPTOPP_NO_VTABLE HashTransformation : public Algorithm
+class CRYPTOPP_DLL CRYPTOPP_NO_VTABLE HashTransformation : virtual public Algorithm
 {
 public:
 	virtual ~HashTransformation() {}
@@ -1380,7 +1380,7 @@ protected:
 ///   to hardware based generators.
 /// \details All generated values are uniformly distributed over the range specified.
 /// \since Crypto++ 3.1
-class CRYPTOPP_DLL CRYPTOPP_NO_VTABLE RandomNumberGenerator : public Algorithm
+class CRYPTOPP_DLL CRYPTOPP_NO_VTABLE RandomNumberGenerator : virtual public Algorithm
 {
 public:
 	virtual ~RandomNumberGenerator() {}
@@ -1466,7 +1466,7 @@ public:
 
 /// \brief Interface for key derivation functions
 /// \since Crypto++ 7.0
-class CRYPTOPP_DLL CRYPTOPP_NO_VTABLE KeyDerivationFunction : public Algorithm
+class CRYPTOPP_DLL CRYPTOPP_NO_VTABLE KeyDerivationFunction : virtual public Algorithm
 {
 public:
 	virtual ~KeyDerivationFunction() {}
@@ -1595,7 +1595,7 @@ public:
 ///   bytes remaining to be processed. A 0 value means all bytes were processed, and a non-0 value
 ///   means bytes remain to be processed.
 /// \nosubgrouping
-class CRYPTOPP_DLL CRYPTOPP_NO_VTABLE BufferedTransformation : public Algorithm, public Waitable
+class CRYPTOPP_DLL CRYPTOPP_NO_VTABLE BufferedTransformation : virtual public Algorithm, public Waitable
 {
 public:
 	virtual ~BufferedTransformation() {}
@@ -2441,7 +2441,7 @@ class CRYPTOPP_DLL CRYPTOPP_NO_VTABLE CryptoParameters : public GeneratableCrypt
 ///   and Commit 9b174e84de7a. Programs should use <tt>AccessMaterial().Load(bt)</tt>
 ///   or <tt>AccessMaterial().Save(bt)</tt> instead.
 /// \sa <A HREF="https://github.com/weidai11/cryptopp/issues/569">Issue 569</A>
-class CRYPTOPP_DLL CRYPTOPP_NO_VTABLE AsymmetricAlgorithm : public Algorithm
+class CRYPTOPP_DLL CRYPTOPP_NO_VTABLE AsymmetricAlgorithm : virtual public Algorithm
 {
 public:
 	virtual ~AsymmetricAlgorithm() {}

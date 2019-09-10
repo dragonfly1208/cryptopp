@@ -14,7 +14,7 @@ void CCM_Base::SetKeyWithoutResync(const byte *userKey, size_t keylength, const 
 	blockCipher.SetKey(userKey, keylength, params);
 
 	if (blockCipher.BlockSize() != REQUIRED_BLOCKSIZE)
-		throw InvalidArgument(AlgorithmName() + ": block size of underlying block cipher is not 16");
+        throw InvalidArgument( AlgorithmName() + ": block size ["+std::to_string(blockCipher.BlockSize())+"] of underlying block cipher is not the required blocksize of "+std::to_string(REQUIRED_BLOCKSIZE));
 
 	m_digestSize = params.GetIntValueWithDefault(Name::DigestSize(), DefaultDigestSize());
 	if (m_digestSize % 2 > 0 || m_digestSize < 4 || m_digestSize > 16)
