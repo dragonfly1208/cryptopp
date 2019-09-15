@@ -69,6 +69,8 @@ bool AlgorithmParameters::GetVoidValue(const char *name, const std::type_info &v
 	else
 		return false;
 }
+AlgorithmParameters::~AlgorithmParameters(){}
+
 
 NAMESPACE_END
 

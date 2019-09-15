@@ -5,7 +5,7 @@
 //           more efficient ARMv8 implementation of the multiply and reduce.
 
 // use "cl /EP /P /DCRYPTOPP_GENERATE_X64_MASM gcm.cpp" to generate MASM code
-
+#include <sstream>
 #include "pch.h"
 #include "config.h"
 
@@ -111,8 +111,12 @@ void GCM_Base::SetKeyWithoutResync(const byte *userKey, size_t keylength, const 
     // https://github.com/weidai11/cryptopp/issues/408.
     const unsigned int blockSize = blockCipher.BlockSize();
     CRYPTOPP_ASSERT(blockSize == REQUIRED_BLOCKSIZE);
-    if (blockCipher.BlockSize() != REQUIRED_BLOCKSIZE)
-        throw InvalidArgument( AlgorithmName() + ": block size ["+std::to_string(blockSize)+"] of underlying block cipher is not the required blocksize of"+std::to_string(REQUIRED_BLOCKSIZE));
+    if (blockCipher.BlockSize() != REQUIRED_BLOCKSIZE){
+        std::stringstream errmsg;
+        errmsg <<AlgorithmName() << ": block size ["<<blockSize<<"] of underlying block cipher is not the required blocksize of "<<REQUIRED_BLOCKSIZE;
+        throw InvalidArgument( errmsg.str());
+    }
+
 
     int tableSize, i, j, k;
 

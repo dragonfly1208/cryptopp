@@ -477,7 +477,7 @@ public:
 	}
 
 	bool GetVoidValue(const char *name, const std::type_info &valueType, void *pValue) const;
-
+	~AlgorithmParameters();
 protected:
 	member_ptr<AlgorithmParametersBase> m_next;
 	bool m_defaultThrowIfNotUsed;

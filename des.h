@@ -39,10 +39,10 @@ struct DES_Info : public FixedBlockSize<8>, public FixedKeyLength<8>
 ///   and CorrectKeyParityBits() to	check or correct the parity bits if you wish.
 /// \sa <a href="http://www.cryptopp.com/wiki/TripleDES">DES</a>
 /// \since Crypto++ 1.0
-class DES : public DES_Info, public BlockCipherDocumentation
+class CRYPTOPP_DLL DES : public DES_Info, public BlockCipherDocumentation
 {
 	/// \brief DES block cipher default operation
-	class CRYPTOPP_NO_VTABLE Base : public BlockCipherImpl<DES_Info>, public RawDES
+	class CRYPTOPP_DLL CRYPTOPP_NO_VTABLE Base : public BlockCipherImpl<DES_Info>, public RawDES
 	{
 	public:
 		void UncheckedSetKey(const byte *userKey, unsigned int length, const NameValuePairs &params);

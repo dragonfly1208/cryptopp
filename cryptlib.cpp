@@ -36,6 +36,9 @@ CRYPTOPP_COMPILE_ASSERT(sizeof(word64) == 8);
 #ifdef CRYPTOPP_NATIVE_DWORD_AVAILABLE
 CRYPTOPP_COMPILE_ASSERT(sizeof(dword) == 2*sizeof(word));
 #endif
+Exception::Exception(ErrorType errorType, const std::string &s) : m_errorType(errorType), m_what(s) {}
+Exception::~Exception() throw() {}
+const char *Exception::what() const throw() { return (m_what.c_str()); }
 
 BufferedTransformation & TheBitBucket()
 {

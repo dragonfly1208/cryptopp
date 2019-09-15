@@ -635,11 +635,11 @@ endif # HAS_SOLIB_VERSION
 ###########################################################
 
 # Default builds program with static library only
-.PHONY: default
-default: cryptest.exe
+#.PHONY: default
+#default: cryptest.exe
 
 .PHONY: all static dynamic
-all: static dynamic cryptest.exe
+all: static dynamic #cryptest.exe
 
 ifneq ($(IS_IOS),0)
 static: libcryptopp.a

@@ -222,7 +222,7 @@ export AOSP_SYS_ARCH_INC="$ANDROID_NDK_ROOT/sysroot/usr/include/$TOOLCHAIN_NAME"
 # like /opt/android-ndk-r10e/toolchains/arm-linux-androideabi-4.7/prebuilt/linux-x86_64/bin
 # Once we locate the tools, we add it to the PATH.
 AOSP_TOOLCHAIN_PATH=""
-for host in "linux-x86_64" "darwin-x86_64" "linux-x86" "darwin-x86"
+for host in "linux-x86_64" "darwin-x86_64" "linux-x86" "darwin-x86"  "windows-x86_64"
 do
 	if [ -d "$ANDROID_NDK_ROOT/toolchains/$TOOLCHAIN_ARCH-$AOSP_TOOLCHAIN_SUFFIX/prebuilt/$host/bin" ]; then
 		AOSP_TOOLCHAIN_PATH="$ANDROID_NDK_ROOT/toolchains/$TOOLCHAIN_ARCH-$AOSP_TOOLCHAIN_SUFFIX/prebuilt/$host/bin"

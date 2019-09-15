@@ -177,13 +177,13 @@ public:
 		OTHER_ERROR
 	};
 
-	virtual ~Exception() throw() {}
+	virtual ~Exception() throw();// {}
 
 	/// \brief Construct a new Exception
-	explicit Exception(ErrorType errorType, const std::string &s) : m_errorType(errorType), m_what(s) {}
+	explicit Exception(ErrorType errorType, const std::string &s);// : m_errorType(errorType), m_what(s) {}
 
 	/// \brief Retrieves a C-string describing the exception
-	const char *what() const throw() {return (m_what.c_str());}
+	const char *what() const throw();// {return (m_what.c_str()); }
 	/// \brief Retrieves a string describing the exception
 	const std::string &GetWhat() const {return m_what;}
 	/// \brief Sets the error string for the exception
