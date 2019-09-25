@@ -19,10 +19,7 @@ class CRYPTOPP_DLL BaseN_Encoder : public Unflushable<Filter>
 public:
 	/// \brief Construct a BaseN_Encoder
 	/// \param attachment a BufferedTransformation to attach to this object
-	BaseN_Encoder(BufferedTransformation *attachment=NULLPTR)
-		: m_alphabet(NULLPTR), m_padding(0), m_bitsPerChar(0)
-		, m_outputBlockSize(0), m_bytePos(0), m_bitPos(0)
-			{Detach(attachment);}
+	BaseN_Encoder(BufferedTransformation *attachment = NULLPTR);
 
 	/// \brief Construct a BaseN_Encoder
 	/// \param alphabet table of ASCII characters to use as the alphabet
@@ -109,8 +106,7 @@ class CRYPTOPP_DLL Grouper : public Bufferless<Filter>
 public:
 	/// \brief Construct a Grouper
 	/// \param attachment a BufferedTransformation to attach to this object
-	Grouper(BufferedTransformation *attachment=NULLPTR)
-		: m_groupSize(0), m_counter(0) {Detach(attachment);}
+	Grouper(BufferedTransformation *attachment = NULLPTR);
 
 	/// \brief Construct a Grouper
 	/// \param groupSize the size of the grouping

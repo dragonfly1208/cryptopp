@@ -426,7 +426,7 @@ public:
 	///     AlgorithmParameters parameters = MakeParameters(name1, value1)(name2, value2)(name3, value3);
 	///   </pre>
 	AlgorithmParameters();
-
+        ~AlgorithmParameters();
 #ifdef __BORLANDC__
 	/// \brief Construct a AlgorithmParameters
 	/// \tparam T the class or type
@@ -477,7 +477,7 @@ public:
 	}
 
 	bool GetVoidValue(const char *name, const std::type_info &valueType, void *pValue) const;
-	~AlgorithmParameters();
+
 protected:
 	member_ptr<AlgorithmParametersBase> m_next;
 	bool m_defaultThrowIfNotUsed;

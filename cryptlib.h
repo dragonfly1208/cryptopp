@@ -570,7 +570,7 @@ public:
 class CRYPTOPP_DLL CRYPTOPP_NO_VTABLE Algorithm : public Clonable
 {
 public:
-	virtual ~Algorithm() {}
+	virtual ~Algorithm();// {}
 
 	/// \brief Interface for all crypto algorithms
 	/// \param checkSelfTestStatus determines whether the object can proceed if the self
@@ -1084,7 +1084,7 @@ public:
 class CRYPTOPP_DLL CRYPTOPP_NO_VTABLE HashTransformation : virtual public Algorithm
 {
 public:
-	virtual ~HashTransformation() {}
+	virtual ~HashTransformation();// {}
 
 	/// \brief Provides a reference to this object
 	/// \return A reference to this object
@@ -1111,8 +1111,8 @@ public:
 	/// \details Final() restarts the hash for a new message.
 	/// \pre <tt>COUNTOF(digest) == DigestSize()</tt> or <tt>COUNTOF(digest) == HASH::DIGESTSIZE</tt> ensures
 	///   the output byte buffer is large enough for the digest.
-	virtual void Final(byte *digest)
-		{TruncatedFinal(digest, DigestSize());}
+	virtual void Final(byte *digest);
+		//{TruncatedFinal(digest, DigestSize());}
 
 	/// \brief Restart the hash
 	/// \details Discards the current state, and restart for a new message
@@ -1157,8 +1157,8 @@ public:
 	/// \details CalculateDigest() restarts the hash for the next message.
 	/// \pre <tt>COUNTOF(digest) == DigestSize()</tt> or <tt>COUNTOF(digest) == HASH::DIGESTSIZE</tt> ensures
 	///   the output byte buffer is large enough for the digest.
-	virtual void CalculateDigest(byte *digest, const byte *input, size_t length)
-		{Update(input, length); Final(digest);}
+	virtual void CalculateDigest(byte *digest, const byte *input, size_t length);
+		//{Update(input, length); Final(digest);}
 
 	/// \brief Verifies the hash of the current message
 	/// \param digest a pointer to the buffer of an \a existing hash

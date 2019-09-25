@@ -112,9 +112,14 @@ void GCM_Base::SetKeyWithoutResync(const byte *userKey, size_t keylength, const 
     const unsigned int blockSize = blockCipher.BlockSize();
     CRYPTOPP_ASSERT(blockSize == REQUIRED_BLOCKSIZE);
     if (blockCipher.BlockSize() != REQUIRED_BLOCKSIZE){
-        std::stringstream errmsg;
-        errmsg <<AlgorithmName() << ": block size ["<<blockSize<<"] of underlying block cipher is not the required blocksize of "<<REQUIRED_BLOCKSIZE;
-        throw InvalidArgument( errmsg.str());
+#ifdef _MSC_VER
+		throw InvalidArgument(AlgorithmName() + ": block size [" + std::to_string(blockSize) + "] of underlying block cipher is not the required blocksize of " + std::to_string(REQUIRED_BLOCKSIZE));
+#else
+		std::stringstream errmsg;
+		errmsg << AlgorithmName() << ": block size [" << blockSize << "] of underlying block cipher is not the required blocksize of " << (unsigned int)REQUIRED_BLOCKSIZE;
+		throw InvalidArgument(errmsg.str());
+#endif
+        
     }
 
 

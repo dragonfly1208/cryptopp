@@ -19,6 +19,13 @@
 
 NAMESPACE_BEGIN(CryptoPP)
 
+BaseN_Encoder::BaseN_Encoder(BufferedTransformation *attachment)
+	: m_alphabet(NULLPTR), m_padding(0), m_bitsPerChar(0)
+	, m_outputBlockSize(0), m_bytePos(0), m_bitPos(0)
+{
+	Detach(attachment);
+}
+
 void BaseN_Encoder::IsolatedInitialize(const NameValuePairs &parameters)
 {
 	parameters.GetRequiredParameter("BaseN_Encoder", Name::EncodingLookupArray(), m_alphabet);
@@ -195,7 +202,10 @@ void BaseN_Decoder::InitializeDecodingLookupArray(int *lookup, const byte *alpha
 		}
 	}
 }
-
+Grouper::Grouper(BufferedTransformation *attachment)
+	: m_groupSize(0), m_counter(0) {
+	Detach(attachment);
+}
 void Grouper::IsolatedInitialize(const NameValuePairs &parameters)
 {
 	m_groupSize = parameters.GetIntValueWithDefault(Name::GroupSize(), 0);

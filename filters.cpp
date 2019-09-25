@@ -518,6 +518,7 @@ void ProxyFilter::NextPutModifiable(byte *s, size_t len)
 		m_filter->PutModifiable(s, len);
 }
 
+SimpleProxyFilter::~SimpleProxyFilter(void) = default;
 // *************************************************************
 
 void RandomNumberSink::IsolatedInitialize(const NameValuePairs &parameters)

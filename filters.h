@@ -1005,9 +1005,9 @@ public:
 	/// \brief Construct a SimpleProxyFilter
 	/// \param filter an output filter
 	/// \param attachment an attached transformation
-	SimpleProxyFilter(BufferedTransformation *filter, BufferedTransformation *attachment)
-		: ProxyFilter(filter, 0, 0, attachment) {}
-
+    SimpleProxyFilter(BufferedTransformation *filter = NULLPTR, BufferedTransformation *attachment = NULLPTR)
+        : ProxyFilter(filter, 0, 0, attachment) {}
+	virtual ~SimpleProxyFilter(void);
 	void FirstPut(const byte * inString)
 		{CRYPTOPP_UNUSED(inString);}
 

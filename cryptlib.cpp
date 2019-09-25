@@ -45,7 +45,7 @@ BufferedTransformation & TheBitBucket()
 	static BitBucket bitBucket;
 	return bitBucket;
 }
-
+Algorithm::~Algorithm() {}
 Algorithm::Algorithm(bool checkSelfTestStatus)
 {
 	if (checkSelfTestStatus && FIPS_140_2_ComplianceEnabled())
@@ -199,12 +199,19 @@ unsigned int StreamTransformation::OptimalDataAlignment() const
 {
 	return GetAlignmentOf<word32>();
 }
-
+HashTransformation::~HashTransformation() {}
 unsigned int HashTransformation::OptimalDataAlignment() const
 {
 	return GetAlignmentOf<word32>();
 }
-
+void HashTransformation::Final(byte *digest)
+{
+	TruncatedFinal(digest, DigestSize());
+}
+void HashTransformation::CalculateDigest(byte *digest, const byte *input, size_t length)
+{
+	Update(input, length); Final(digest);
+}
 #if 0
 void StreamTransformation::ProcessLastBlock(byte *outString, const byte *inString, size_t length)
 {
