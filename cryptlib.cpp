@@ -57,6 +57,8 @@ Algorithm::Algorithm(bool checkSelfTestStatus)
 			throw SelfTestFailure("Cryptographic algorithms are disabled after a power-up self test failed.");
 	}
 }
+bool SimpleKeyingInterface::IsValidKeyLength(size_t keylength) const
+        {return keylength == GetValidKeyLength(keylength);}
 
 void SimpleKeyingInterface::SetKey(const byte *key, size_t length, const NameValuePairs &params)
 {

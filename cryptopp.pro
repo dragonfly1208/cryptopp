@@ -50,7 +50,6 @@ HEADERS += 3way.h \
             crc.h \
             cryptlib.h \
             darn.h \
-            default.h \
             des.h \
             dh.h \
             dh2.h \
@@ -220,12 +219,10 @@ SOURCES +=  3way.cpp \
             crc_simd.cpp \
             cryptlib.cpp \
             darn.cpp \
-            default.cpp \
             des.cpp \
             dessp.cpp \
             dh.cpp \
             dh2.cpp \
-            dll.cpp \
             donna_32.cpp \
             donna_64.cpp \
             donna_sse.cpp \
@@ -352,7 +349,8 @@ SOURCES +=  3way.cpp \
             xtrcrypt.cpp \
             zdeflate.cpp \
             zinflate.cpp \
-            zlib.cpp
+            zlib.cpp \
+    dll.cpp
 
     LIBS += -lws2_32
 win32-g++ { # 支持MinGW

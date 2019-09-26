@@ -641,8 +641,7 @@ public:
 	/// \param keylength the requested keylength
 	/// \return true if keylength is valid, false otherwise
 	/// \details Internally the function calls GetValidKeyLength()
-	virtual bool IsValidKeyLength(size_t keylength) const
-		{return keylength == GetValidKeyLength(keylength);}
+    virtual bool IsValidKeyLength(size_t keylength) const;
 
 	/// \brief Sets or reset the key of this object
 	/// \param key the key to use when keying the object

@@ -27,8 +27,8 @@ public:
 	virtual TimerWord GetCurrentTimerValue() =0;	// GetCurrentTime is a macro in MSVC 6.0
 	virtual TimerWord TicksPerSecond() =0;	// this is not the resolution, just a conversion factor into seconds
 
-    void StartTimer();
-    double ElapsedTimeAsDouble();
+    virtual void StartTimer();
+    virtual double ElapsedTimeAsDouble();
 	unsigned long ElapsedTime();
 
 private:
